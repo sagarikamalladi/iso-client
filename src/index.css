@@ -1,0 +1,239 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.Main-title {
+    text-align: center;
+    font-size: 1.7em;
+    color: rgba(0, 39, 3, 0.8);
+}
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.Header-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.Header-search {
+    flex: 1;
+    text-align: center;
+}
+
+.Header-search__form {
+
+}
+
+.Header-search__field {
+    width: 70%;
+    padding: 7px 0 7px 5px;
+    border: 1px solid rgba(199, 231, 201, 0.5);
+    border-right-width: 0px;
+    background-color: rgba(199, 231, 201, 0.1);
+    color: #1B5E20;
+
+}
+
+
+
+.Header-search__button {
+    position: relative;
+    padding: 7px 7px;
+    left: -1px;
+    border: 1px solid rgba(199, 231, 201, 0.5);
+    border-left-width: 0;
+    background-color: rgba(199, 231, 201, 0.4);
+    color: #1B5E20;
+    cursor: pointer;
+}
+
+.Header-search__button:hover {
+    background-color: #9AD19E;
+    color: #1B5E20;
+}
+
+.arrow{
+    position: relative;
+    background: rgba(199, 231, 201, 0.6);
+    display: inline-block;
+}
+
+.arrow:after {
+    right: 100%;
+    top: 50%;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    border: 10px solid rgba(199, 231, 201, 0.1);
+    border-right-color: rgba(199, 231, 201, 0.9);
+    margin-top: -9px;
+}
+
+::-webkit-input-placeholder { /* For WebKit browsers */
+    color: rgba(27,94,31, 0.4);
+    font-weight: 400;
+
+}
+
+:-moz-placeholder { /* For Mozilla Firefox 4 to 18 */
+    color: rgba(27,94,31, 0.4);
+    font-weight: 400;
+}
+
+
+::-moz-placeholder { /* For Mozilla Firefox 19+ */
+    color: rgba(27,94,31, 0.4);
+    font-weight: 400;
+}
+
+:-ms-input-placeholder { /* For Internet Explorer 10+ */
+    color: rgba(27,94,31, 0.4);
+    font-weight: 400;
+}
+
+.QuestionRow {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    border-bottom-color: #E8F5E9;
+    margin: 0.5em 0.1em;
+    box-sizing: border-box;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.QuestionRow:hover {
+    border: 1px solid #4CAF50;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #FBFDFC;
+    cursor: pointer;
+}
+
+.QuestionRow-rank {
+
+    display: flex;
+
+    font-size: 0.8em;
+
+}
+
+.QuestionRow-rank__item {
+    background-color: #FCE4EC;
+    border: 1px dotted #F8BBD0;
+    padding: 5px;
+    margin: 3px;
+    text-align: center;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.rank__item_val {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #C2185B;
+}
+
+.rank__item_name {
+    margin-top: 3px;
+    font-size: 0.8em;
+    color: rgba(197, 17, 99, 0.6);
+}
+
+.QuestionRow-desc {
+    flex: 1;
+    padding: 0.2em 0.3em .4em 0.3em;
+    margin-left: 1em;
+    color: #1B5E20;
+}
+
+.QuestionRow-desc:hover {
+    color: #002703;
+}
+
+.QuestionRow-Catetegories {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.QuestionRow-Catetegories__item {
+    background-color: #E8F5E9;
+    border: 1px solid #C8E6C9;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0.3em;
+    font-size: 0.6em;
+    color: #1B5E20;
+}
