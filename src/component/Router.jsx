@@ -2,22 +2,22 @@ import React from 'react';
 import {
   BrowserRouter,
   Route,
-  Switch,
-  NavLink,
-  Redirect,
-  withRouter
+  Switch
 } from 'react-router-dom';
 import Home from './index'
+import Question from './question/Question';
+import NewQuestion from "./question/NewQuestion";
 
 const Pages = () => (
 
-  <BrowserRouter>
+  <BrowserRouter >
     <div>
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/signup" component={SignUp}/>
-        <Route exact path="/question/:id" component={SignUp}/>
+        <Route exact path="/question/:id" component={Question}/>
+        <Route exact path="/newQuestion" component={NewQuestion}/>
       </Switch>
     </div>
   </BrowserRouter>

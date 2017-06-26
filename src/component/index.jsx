@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import HeaderComponent from './header/header'
-import MainComponent from "./main/main";
+import HeaderComponent from './header/Header'
+import MainComponent from "./main/Main";
 
 class App extends Component {
 
@@ -80,19 +80,16 @@ class App extends Component {
   }
 
   onHandlerSearch(e){
-
     e.preventDefault();
     let searchTxt = e.target.search.value;
-    alert(searchTxt);
+    console.log(searchTxt);
   }
-
-
 
   render() {
 
     return (
       <div>
-        <HeaderComponent onSearch={this.onHandlerSearch} />
+        <HeaderComponent onHandleSearch={this.onHandlerSearch} />
         <MainComponent questions={this.state.questions} />
       </div>
     );
