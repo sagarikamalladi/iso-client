@@ -7,6 +7,8 @@ import {
 import Home from './index'
 import Question from './question/Question';
 import NewQuestion from "./question/NewQuestion";
+import Login from "./login/Login";
+import SignUp from "./signup/SignUp";
 
 const Pages = () => (
 
@@ -24,12 +26,8 @@ const Pages = () => (
 
 );
 
-const Login = () => (
-  <h1>Login Page</h1>
-);
 
-const SignUp = () => (
-  <h1>Sign Up Page</h1>
-);
+
+
 
 export default Pages;

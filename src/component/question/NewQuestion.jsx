@@ -57,7 +57,7 @@ class NewQuestion extends Component {
         desc: 'Login'
       },
       {
-        page: '/',
+        page: '/signup',
         desc: 'Sign Up'
       },
     ];

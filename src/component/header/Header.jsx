@@ -14,7 +14,7 @@ const menuItems = [
     desc: 'Login'
   },
   {
-    page: '/',
+    page: '/signup',
     desc: 'Sign Up'
   },
 ];

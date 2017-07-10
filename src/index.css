@@ -422,6 +422,12 @@ body {
     background-color: rgba(199, 231, 201, 0.1);
     color: #1B5E20;
 }
+.Category__password {
+  width: 70%;
+  padding: 7px 0 7px 5px;
+  webkit-text-security :circle;
+  font-family: caption;
+}
 
 .Category__form{
    flex-grow: 1;
