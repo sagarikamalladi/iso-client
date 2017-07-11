@@ -25,8 +25,27 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgba(0, 39, 3, 0.8);
+}
+
+body{
+    overflow-x: hidden;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+}
+
 body {
+    box-sizing: inherit;
     line-height: 1;
+    color: rgba(0, 39, 3, 0.8);
 }
 
 ol, ul {
@@ -48,12 +67,6 @@ table {
     border-spacing: 0;
 }
 
-*,
-*:after,
-*:before {
-    box-sizing: border-box;
-}
-
 a:link {
     text-decoration: none;
 }
@@ -68,13 +81,18 @@ body {
     font-family: sans-serif;
 }
 
-.Header-image{
+.label{
+    font-size: 0.9em;
+    margin-right: 0.5em;
+}
+
+.Header-image {
     max-width: 100%;
-    height:auto;
+    height: auto;
     display: block;
 }
 
-.Main{
+.Main {
     width: 95%;
     margin: 0 auto;
 }
@@ -134,7 +152,7 @@ body {
     color: #1B5E20;
 }
 
-.arrow{
+.arrow {
     position: relative;
     background: rgba(199, 231, 201, 0.6);
     display: inline-block;
@@ -153,54 +171,51 @@ body {
 }
 
 ::-webkit-input-placeholder { /* For WebKit browsers */
-    color: rgba(27,94,31, 0.4);
+    color: rgba(27, 94, 31, 0.4);
     font-weight: 400;
 
 }
 
 :-moz-placeholder { /* For Mozilla Firefox 4 to 18 */
-    color: rgba(27,94,31, 0.4);
+    color: rgba(27, 94, 31, 0.4);
     font-weight: 400;
 }
 
-
 ::-moz-placeholder { /* For Mozilla Firefox 19+ */
-    color: rgba(27,94,31, 0.4);
+    color: rgba(27, 94, 31, 0.4);
     font-weight: 400;
 }
 
 :-ms-input-placeholder { /* For Internet Explorer 10+ */
-    color: rgba(27,94,31, 0.4);
+    color: rgba(27, 94, 31, 0.4);
     font-weight: 400;
 }
 
-.Header-menu{
+.Header-menu {
 
 }
 
-.Header-menu__items{
+.Header-menu__items {
     display: flex;
 
 }
 
-.Header-menu__item:nth-last-child(n+2){
+.Header-menu__item:nth-last-child(n+2) {
     border-right: 2px solid rgba(199, 231, 201, 0.9);
 }
 
-
-
-.Header-menu__items a{
+.Header-menu__items a {
     font-size: 0.9em;
     margin: 1px 5px;
     color: #1B5E20;
     border: 1px dotted rgba(199, 231, 201, 0.5);
     padding: 3px;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
-.Header-menu__items a:hover{
+.Header-menu__items a:hover {
     background-color: rgba(199, 231, 201, 0.9);
 }
 
@@ -293,29 +308,28 @@ body {
     width: 80%;
     margin: 0 auto 3em auto;
 
-
 }
 
-.Question-desc{
+.Question-desc {
     font-size: 1.2em;
     color: rgba(0, 39, 3, 0.8);
     margin: 0.6em 0;
     padding-bottom: 5px;
-    border-bottom: 1px solid rgba(27,94,31, 0.2);
+    border-bottom: 1px solid rgba(27, 94, 31, 0.2);
 }
 
-.Answer-desc{
+.Answer-desc {
     border-bottom: none;
 }
 
-.Question-item{
+.Question-item {
     display: flex;
 
 }
 
 .Question-item,
-.Answer-item{
-    border-bottom: 1px solid rgba(27,94,31, 0.2);
+.Answer-item {
+    border-bottom: 1px solid rgba(27, 94, 31, 0.2);
     margin-bottom: 0.5em;
     padding-bottom: 1.6em;
 
@@ -327,7 +341,7 @@ body {
     flex-basis: 80px;
 }
 
-.Question-detail{
+.Question-detail {
     flex: 1;
 }
 
@@ -352,12 +366,15 @@ body {
     cursor: pointer;
     transition: transform 150ms ease-in-out;
 }
+
 .vote__arrow:active {
     transform: scale(1.15);
 }
+
 .vote__arrow--up:active {
     stroke: #b4da55;
 }
+
 .vote__arrow--down:active {
     stroke: #F33119;
 }
@@ -374,7 +391,7 @@ body {
     overflow: hidden;
 }
 
-.Question-newAnswer{
+.Question-newAnswer {
 
 }
 
@@ -394,13 +411,12 @@ body {
     min-height: 18em;
 }
 
-.NewQuestion-footer{
+.NewQuestion-footer {
     margin: 0.6em 0;
 }
 
-.NewQuestion-footer{
-    display: flex;
-    justify-content: space-between;
+.NewQuestion-footer {
+
 
 }
 
@@ -423,7 +439,53 @@ body {
     color: #1B5E20;
 }
 
-.Category__form{
-   flex-grow: 1;
-   margin-left: 2em;
+.Title__field {
+    width: 70%;
+    padding: 7px 0 7px 5px;
+    border: 1px solid rgba(199, 231, 201, 0.5);
+    background-color: rgba(199, 231, 201, 0.1);
+    color: #1B5E20;
 }
+
+.Category__form {
+    flex-grow: 1;
+    margin-left: 2em;
+}
+
+.Messages {
+    height: 1.1em;
+
+}
+
+.Messages-bar {
+    height: 1.8em;
+}
+
+.Hidden {
+    display: none;
+}
+
+.Message-box {
+    border: 1px dotted #c8e6c9;
+    font-size: 0.8em;
+    padding: 5px 0 5px 1em;
+    font-weight: 300;
+    border-radius: 7px;
+}
+
+.SuccessMsg {
+    color: #1b5e20;
+    border-color: #c8e6c9;
+    background-color: rgba(232, 245, 233, 0.3);
+}
+
+.ErrorMsg {
+    color: #d50000;
+    border-color: #ffcdd2;
+    background-color: rgba(255, 235, 238, 0.3);
+}
+
+.react-tagsinput{
+    width: 100%;
+}
+

@@ -5,6 +5,7 @@ import Vote from './Vote';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import SaveBtn from "./SaveBtn";
+import api from '../../api';
 
 class Question extends Component {
 
@@ -63,6 +64,8 @@ class Question extends Component {
 
   handleOnSave(e) {
     e.preventDefault();
+
+
 
     console.log(e);
     console.log(this.state.text);

@@ -1,5 +1,6 @@
 import React from 'react';
 import uid from 'uid2';
+import PropTypes from 'prop-types';
 
 const Categories = props => (
   <ul className="QuestionRow-Catetegories">
@@ -17,5 +18,9 @@ const Categories = props => (
   </ul>
 
 );
+
+Categories.propTypes = {
+  categories: PropTypes.array
+};
 
 export default Categories;

@@ -18,7 +18,7 @@ class App extends Component {
               views: 30
             },
             content: {
-              description: "My First Question",
+              text: "My First Question",
               categories: [
                 "Android",
                 "Java",
@@ -36,7 +36,7 @@ class App extends Component {
               views: 30
             },
             content: {
-              description: "My Second Question",
+              text: "My Second Question",
               categories: [
                 "Android",
                 "Java",
@@ -54,7 +54,7 @@ class App extends Component {
               views: 30
             },
             content: {
-              description: "My Third Question",
+              text: "My Third Question",
               categories: [
                 "Android",
                 "Java",
