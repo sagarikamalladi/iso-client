@@ -1,48 +1,171 @@
 import React, {Component} from 'react';
-import ReactQuill from "react-quill";
 import Logo from "../header/Logo";
 import HeaderNav from "../header/HeaderNav";
-import SaveBtn from "./SaveBtn";
-import 'react-quill/dist/quill.snow.css';
-import NewCategory from "./NewCategory";
-import Categories from "../main/Categories";
-import uid from 'uid2';
+import api from '../../api';
+import NewQuestionForm from './NewQuestionForm';
+import AnswerComponent from "./AnswerComponent";
+
 
 class NewQuestion extends Component {
+
 
   constructor(props) {
     super(props);
 
+
     this.state = {
-      text: '',
-      categories: []
+      serverMsg: '',
+      msgHidden: true,
+      successMsg: false,
+      errorMsg: false,
+      question: {
+        content: {
+          title: 'Demo',
+          text: 'Lorem ipsum and moer para lels'
+        },
+        ranks: {
+          votes: 0,
+        }
+      },
+      answers: []
     };
 
-    this.handleOnEditorChange = this.handleOnEditorChange.bind(this);
     this.handleOnSave = this.handleOnSave.bind(this);
-    this.handleOnAddCategory = this.handleOnAddCategory.bind(this);
+    this.handleOnSaveAnswer = this.handleOnSaveAnswer.bind(this);
+
+    /*this.handleOnEditorChange = this.handleOnEditorChange.bind(this);
+     this.handleOnAddCategory = this.handleOnAddCategory.bind(this);
+     this.handleOnTitleChange = this.handleOnTitleChange.bind(this);*/
   }
 
-  handleOnEditorChange(value) {
-    this.setState({text: value});
+
+  showMessage(msg, msgHidden, showErrorMsg, showSuccessMessage) {
+    this.setState({
+      serverMsg: msg,
+      msgHidden: msgHidden,
+      errorMsg: showErrorMsg,
+      successMsg: showSuccessMessage
+    });
   }
 
-  handleOnAddCategory(e) {
+  showSuccessMessage(msg) {
+    this.showMessage(msg, false, false, true);
+  }
+
+  showErrorMessage(msg) {
+    this.showMessage(msg, false, true, false);
+  }
+
+  handleOnSaveAnswer(e) {
     e.preventDefault();
 
-    let updated = this.state.categories.slice();
-    updated.push(e.target.category.value);
-    e.target.category.value = '';
+    let form = e.target,
+      text = form[ 'text' ].value;
 
-    this.setState({
-      categories: updated
-    });
+    console.log(text);
+
+    api.answer.save({
+        questionId: this.state.question.id,
+        text: text
+      },
+      (err, res) => {
+
+        if (err) {
+          console.log('Error on callback:', JSON.stringify(err));
+          console.error(err);
+          this.showErrorMessage(
+            'Internal Error. Please, contact to the administrator.'
+          );
+          return;
+        }
+
+        if (res.statusCode === 201) {
+
+          console.log(res.body);
+
+          let lastAnswers = this.state.answers.slice();
+
+          lastAnswers.push(res.body.answer);
+          console.info(lastAnswers);
+          this.setState({
+            answers: lastAnswers
+          });
+          form[ 'text' ] = '';
+
+        } else {
+          this.showErrorMessage(res.body.err);
+        }
+
+      }
+    );
+
   }
 
   handleOnSave(e) {
     e.preventDefault();
 
-    console.log(this.state);
+    console.log(e.target);
+
+    let _self = this,
+      form = e.target,
+      title = form[ 'question-title' ].value,
+      text = form[ 'text' ].value,
+      categories = form[ 'categories' ].value;
+
+    api.question.save({
+        title: title,
+        content: {
+          text: text,
+          categories: categories
+        }
+      },
+      (err, res) => {
+
+        if (err) {
+          console.log('Error on callback:', JSON.stringify(err));
+          console.error(err);
+          _self.showErrorMessage(
+            'Internal Error. Please, contact to the administrator.'
+          );
+          return;
+        }
+
+        if (res.statusCode === 201) {
+
+          /*let lastQuestions = this.state.questions.slice();
+
+           lastQuestions.push({
+
+           });*/
+
+          _self.showSuccessMessage(res.body.message);
+          _self.setState({
+            question: {
+              id: res.body.id,
+              content: {
+                title: title,
+                text: text,
+                categories: categories
+              },
+              ranks: {
+                votes: 0
+              }
+            }
+          });
+
+        } else {
+          _self.showErrorMessage(res.body.err);
+        }
+
+        setTimeout(() => {
+          _self.setState({
+            msgHidden: true
+          });
+        }, 4000);
+
+      }
+    );
+
   }
 
   render() {
@@ -62,6 +185,7 @@ class NewQuestion extends Component {
       },
     ];
 
+
     return (
       <article className="Question">
 
@@ -71,28 +195,27 @@ class NewQuestion extends Component {
         </header>
 
         <section className="Question-newAnswer">
-          <h3 className="Question-desc Answer-desc">Posting a new question</h3>
-          <ReactQuill value={this.state.text}
-                      onChange={this.handleOnEditorChange}
-                      theme={'snow'}
-                      modules={ReactQuill.modules}
-                      formats={ReactQuill.formats}
-          />
+
+          {
+            (this.state.question && this.state.question.id)
+              ?
+              <AnswerComponent
+                question={this.state.question}
+                handleOnSaveAnswer={this.handleOnSaveAnswer}
+                answersList={this.state.answers}
+              />
+              :
+              <NewQuestionForm
+                handleOnSave={this.handleOnSave}
+                msgHidden={this.state.msgHidden}
+                successMsg={this.state.successMsg}
+                errorMsg={this.state.errorMsg}
+                serverMsg={this.state.serverMsg}
+              />
+          }
+
         </section>
 
-        <section className="NewQuestion-footer">
-          <SaveBtn
-            handleOnSave={this.handleOnSave}
-          />
-          <NewCategory
-            handleOnAddCategory={this.handleOnAddCategory}
-          />
-        </section>
-        <section>
-          <Categories
-            categories={this.state.categories}
-          />
-        </section>
 
       </article>
     );

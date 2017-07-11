@@ -9,11 +9,13 @@ const QuestionRow = (props) => (
            key={props.id}
            id={props.id}
   >
-    <Ranks
+    {
+      (props.ranks) ? <Ranks
       ranks={props.ranks}
-    />
+    /> : ''
+    }
     <section className="QuestionRow-desc">
-      <h3>{props.content.description}</h3>
+      <h3>{props.content.text}</h3>
       <Categories
         key={uid(4)}
         categories={props.content.categories}
